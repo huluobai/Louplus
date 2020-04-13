@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8">
+<title>huluobai</title>
+
+<head>
+
+<body>
+
+    <h1>Book List</h1>
+<table>
+    <tr>
+
+        <th>书籍编号</th>
+        <th>书名</th>
+        <th>作者</th>
+        <th>出版社</th>
+        <th>出版时间</th>
+    </tr>
+{% for book in book_list.all %}
+    <tr>
+        <td>{{ book.no }}</td>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.pub_house }}</td>
+        <td>{{ book.pub_date }}</td>
+
+
+    </tr>
+{% endfor %}
+</table>
+</body>
+
+<form action="{% url 'lib:addBook' %}" method="post" name="addBook">
+    {% csrf_token %}
+    <p><span>编号：</span><input type="text"  name="name"></p>
+    <p><span>书名：</span><input type="text"  name="name"></p>
+    <p><span>作者：</span><input type="text"  name="author"></p>
+    <p><span>出版社：</span><input type="text"  name="pub_house"></p>
+    <p><span>出版时间：</span><input type="text"  name="pub_house"></p>
+    <input type="submit" value="添加">
+</form>
+
+<html>
+
